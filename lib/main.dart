@@ -17,7 +17,7 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  String result = "Hey!";
+  String result = "¿Necesitas algo? ¡Escanéalo! :D";
   Future _scanQR() async {
     try {
       String qrResult = await BarcodeScanner.scan();
@@ -38,7 +38,7 @@ class HomePageState extends State<HomePage> {
       }
     } on FormatException {
       setState(() {
-        result = "Bienvenido";
+        result = "¿Necesitas algo? ¡Escanéalo! :)";
       });
     } catch (ex) {
       setState(() {
@@ -48,28 +48,34 @@ class HomePageState extends State<HomePage> {
   }
 
   _launchURL(String _url) async {
-  if (await canLaunch(_url)) {
-    await launch(_url);
-  } else {
-    throw 'Could not launch $_url';
+    if (await canLaunch(_url)) {
+      await launch(_url);
+    } else {
+      throw 'No es posible abrir el enlace $_url';
+    }
   }
-}
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("posk"),
+    return new MaterialApp(
+      title: 'Little Bro',
+      theme: new ThemeData(
+        primarySwatch: Colors.orange,
       ),
-      body: Center(
-        child: Text(result, style: new TextStyle(fontSize: 30.0)),
+      home: new Scaffold(
+        appBar: AppBar(
+          title: Text("Little Bro - Pizza & Bar"),
+        ),
+        body: Center(
+          child: Text(result, style: new TextStyle(fontSize: 22.0)),
+        ),
+        floatingActionButton: FloatingActionButton.extended(
+          icon: Icon(Icons.camera_alt),
+          label: Text("Pedir Algo"),
+          onPressed: _scanQR,
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        icon: Icon(Icons.camera_alt),
-        label: Text("Escanear Código"),
-        onPressed: _scanQR,
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
