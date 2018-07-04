@@ -67,7 +67,7 @@ class HomePageState extends State<HomePage> {
           title: Text("Little Bro - Pizza & Bar"),
         ),
         body: Center(
-          child: Text(result, style: new TextStyle(fontSize: 22.0)),
+          child: Text(result, style: new TextStyle(fontSize: 22.0, color: Colors.brown)),
         ),
         floatingActionButton: FloatingActionButton.extended(
           icon: Icon(Icons.camera_alt),
@@ -75,6 +75,7 @@ class HomePageState extends State<HomePage> {
           onPressed: _scanQR,
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        backgroundColor: Colors.amber,
       ),
     );
   }
