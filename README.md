@@ -1,9 +1,1 @@
-# posk
-
-A new Flutter project.
-
-## Getting Started
-
-For help getting started with Flutter, view our online
-[documentation](https://flutter.io/).
-"posk-app" 
+Aplicación hybrida (Android e iOS) para realizar pedidos desde el celular escaneando un código de la carta
